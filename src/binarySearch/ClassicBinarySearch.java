@@ -1,7 +1,13 @@
 package binarySearch;
 
 public class ClassicBinarySearch {
-    public int binarySearch(int[] array, int target) {
+
+    public static void main(String args[]) {
+        int[] numbers = {2,9,11,13};
+        System.out.println(binarySearch(numbers, 2));
+    }
+
+    public static int binarySearch(int[] array, int target) {
         //九章版本，缩小搜索空间到只有2个数字
         if (array == null || array.length == 0) {
             return -1;
@@ -12,9 +18,9 @@ public class ClassicBinarySearch {
         while (start + 1 < end) {
             int mid = start + (end - start) / 2;
             if (array[mid] < target) {
-                end = mid;
-            } else if (array[mid] > target) {
                 start = mid;
+            } else if (array[mid] > target) {
+                end = mid;
             } else {
                 return mid;
             }
