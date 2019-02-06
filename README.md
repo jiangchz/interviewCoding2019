@@ -19,6 +19,6 @@ coding log for 2019 interview preparation.
     - a to the power of b
     - Selection Sort
     - Merge Sort
-    
+
 
 
