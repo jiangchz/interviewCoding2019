@@ -78,13 +78,65 @@ public class KClosestInSortedArray {
     }
 
     public static void main(String args[]) {
-        int[] array = {1,2,3,7,7,7,7,7,7,7};
-        int target = 4;
-        int k = 5;
-        int[] results = searchKClosestInSortedArray(array, target, k);
+        int[] array = {1,5};
+        int target = 10;
+        int k = 2;
+        int[] results = kClosest(array, target, k);
         for (int num : results) {
             System.out.println(num);
         }
+    }
+
+
+    // reversion on Feb 7th
+    public static int[] kClosest(int[] array, int target, int k) {
+        if (array == null || array.length == 0) {
+            return array;
+        }
+
+        int startIndex = findClosestIndexToTarget(array, target);
+        return getKClosestFromIndex(array, target,  k, startIndex);
+
+    }
+
+    private static int[] getKClosestFromIndex(int[] array, int target, int k, int startIndex) {
+        int[] result = new int[k];
+        int left = startIndex;
+        int right = startIndex + 1;
+        for (int index = 0; index < k; index++) {
+            if (left < 0) {
+                result[index] = array[right++];
+                continue;
+
+            }
+            if (right > array.length - 1) {
+                result[index] = array[left--];
+                continue;
+            }
+
+            if (target - array[left] > array[right] - target) {
+                result[index] = array[right++];
+            } else {
+                result[index] = array[left--];
+            }
+        }
+        return result;
+    }
+
+    private static int findClosestIndexToTarget(int[] array, int target) {
+        int left = 0;
+        int right = array.length - 1;
+        while (left + 1 < right) {
+            int mid = left + (right - left) / 2;
+            if (array[mid] == target) {
+                return mid;
+            } else if (array[mid] > target) {
+                right = mid;
+            } else {
+                left = mid;
+            }
+        }
+        return target - array[left] > array[right] - target ? right: left;
     }
 }
 /*
