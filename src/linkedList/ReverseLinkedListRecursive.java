@@ -5,10 +5,13 @@ import java.util.LinkedList;
 public class ReverseLinkedListRecursive {
     public static ListNode reverse(ListNode head) {
         if (head == null || head.next == null) return head;
-
-        //todo
-        return null;
+        ListNode newHead = reverse(head.next);
+        ListNode next = head.next;
+        next.next = head;
+        head.next = null;
+        return newHead;
     }
+
     public static void main (String args[]) {
         LinkedList<ListNode> test = new LinkedList();
         ListNode node1 = new ListNode(1);
@@ -20,7 +23,7 @@ public class ReverseLinkedListRecursive {
         test.add(node2);
         test.add(node3);
         ListNode temp = reverse(test.getFirst());
-        while (temp.next != null) {
+        while (temp != null) {
             System.out.println(temp.value);
             temp = temp.next;
         }
