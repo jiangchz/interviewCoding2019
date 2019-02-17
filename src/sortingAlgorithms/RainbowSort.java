@@ -2,29 +2,19 @@ package sortingAlgorithms;
 
 public class RainbowSort {
     public static void main(String args[]) {
-<<<<<<< HEAD
-        int[] array = new int[] {0, 1, -1, 0, -1, 0, -1, 0, -1, 1, -1};
+        int[] array = new int[] {0,0,-1,-1,0,1, -1, 0};
         rainbowSort(array);
-=======
-        int[] array = new int[] {6,5,4,3,2,1};
-        quickSort(array);
->>>>>>> 550c175... Add rainbowSort
         for (int num: array) {
             System.out.println(num);
         }
     }
 
-<<<<<<< HEAD
     public static int[] rainbowSort(int[] array) {
-=======
-    public static int[] quickSort(int[] array) {
->>>>>>> 550c175... Add rainbowSort
         if (array == null || array.length == 0) {
             return array;
         }
 
         int left = 0;
-<<<<<<< HEAD
         int middle = 0;
         int right = array.length - 1;
 
@@ -38,37 +28,6 @@ public class RainbowSort {
             }
         }
         return array;
-=======
-        int right = array.length - 1;
-        sort(array, left, right);
-        return array;
-    }
-    
-    private static void sort(int array[], int left, int right) {
-        if (left >= right) {
-            return;
-        }
-        int mid = left + (right - left) / 2;
-        int pivot = array[mid];
-        int start = left;
-        int end = right;
-
-        while (start <= end) {
-            while (start <= end && array[start] < pivot) {
-                start++;
-            }
-
-            while (start <= end && array[end] > pivot) {
-                end--;
-            }
-
-            if (start <= end) {
-                swap(array, start++, end--);
-            }
-        }
-        sort(array, left, end);
-        sort(array, start, right);
->>>>>>> 550c175... Add rainbowSort
     }
 
     private static void swap(int[] array, int index1, int index2) {
@@ -76,8 +35,6 @@ public class RainbowSort {
         array[index1] = array[index2];
         array[index2] = tmp;
     }
-<<<<<<< HEAD
-
 }
 
 /*
