@@ -1,4 +1,4 @@
-package BinaryTree;
+package graphs;
 
 public class TreeNode {
     public int key;

@@ -45,7 +45,7 @@ public class QuickSort {
         sort(array, start, right);
     }
 
-    private static void swap(int[] array, int index1, int index2) {
+    public static void swap(int[] array, int index1, int index2) {
         int tmp = array[index1];
         array[index1] = array[index2];
         array[index2] = tmp;

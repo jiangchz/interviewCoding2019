@@ -1,4 +1,4 @@
-package BinaryTree;
+package binaryTree;
 
 public class IsBST {
     public boolean isBST(TreeNode root) {

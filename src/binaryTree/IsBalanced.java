@@ -1,4 +1,4 @@
-package BinaryTree;
+package binaryTree;
 
 public class IsBalanced {
     public boolean isBalanced(TreeNode root) {

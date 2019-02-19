@@ -1,4 +1,4 @@
-package BinaryTree;
+package binaryTree;
 
 public class IsIdentical {
     public boolean isIdentical(TreeNode root1, TreeNode root2) {

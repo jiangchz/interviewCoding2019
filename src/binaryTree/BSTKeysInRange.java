@@ -1,4 +1,4 @@
-package BinaryTree;
+package binaryTree;
 
 public class BSTKeysInRange {
     public void printBSTInRange(TreeNode root, int min, int max) {

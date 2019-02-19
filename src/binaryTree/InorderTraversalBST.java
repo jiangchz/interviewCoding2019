@@ -1,27 +1,28 @@
-package BinaryTree;
+package binaryTree;
 
 
 import java.util.Deque;
 import java.util.LinkedList;
 import java.util.List;
 
-public class PreorderTraversalBST {
+public class InorderTraversalBST {
     public List<Integer> preOrder(TreeNode root) {
         List<Integer> result = new LinkedList<>();
         if (root == null) {
             return result;
         }
-        // !!!注意前序遍历需要用stack！
+        // !!!注意中序遍历需要用stack！
         Deque<TreeNode> visitedStack = new LinkedList<>();
-        visitedStack.add(root);
-        while (visitedStack.size() != 0) {
-            TreeNode current = visitedStack.pop();
-            result.add(current.key);
-            if (current.right != null) {
-                visitedStack.push(current.right);
-            }
-            if (current.left != null) {
-                visitedStack.push(current.left);
+
+        while (visitedStack.size() != 0 || root != null) {
+
+            if (root != null) {
+                visitedStack.push(root);
+                root = root.left;
+            } else {
+                root = visitedStack.pop();
+                result.add(root.key);
+                root = root.right;
             }
         }
         return result;

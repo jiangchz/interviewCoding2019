@@ -1,4 +1,4 @@
-package BinaryTree;
+package binaryTree;
 
 public class IsSymmetricBinaryTree {
     public boolean isSymmetric(TreeNode root) {
