@@ -1,4 +1,4 @@
-package graphs;
+package graphsAndSearch;
 
 public class TreeNode {
     public int key;

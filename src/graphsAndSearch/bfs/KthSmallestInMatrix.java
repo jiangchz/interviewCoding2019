@@ -1,4 +1,4 @@
-package graphs.bfs;
+package graphsAndSearch.bfs;
 
 import java.util.Comparator;
 import java.util.PriorityQueue;

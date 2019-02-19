@@ -1,4 +1,4 @@
-package graphs;
+package graphsAndSearch;
 
 import java.util.LinkedList;
 

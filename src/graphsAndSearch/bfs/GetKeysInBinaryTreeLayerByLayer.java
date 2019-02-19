@@ -1,7 +1,7 @@
-package graphs.bfs;
+package graphsAndSearch.bfs;
 
-import graphs.TestTree;
-import graphs.TreeNode;
+import graphsAndSearch.TestTree;
+import graphsAndSearch.TreeNode;
 
 import java.util.LinkedList;
 

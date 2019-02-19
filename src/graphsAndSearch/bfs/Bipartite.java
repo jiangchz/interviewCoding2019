@@ -1,6 +1,6 @@
-package graphs.bfs;
+package graphsAndSearch.bfs;
 
-import graphs.GraphNode;
+import graphsAndSearch.GraphNode;
 
 import java.util.HashMap;
 import java.util.LinkedList;

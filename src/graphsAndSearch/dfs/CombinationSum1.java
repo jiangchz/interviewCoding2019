@@ -1,4 +1,4 @@
-package backTracking;/*
+package graphsAndSearch.dfs;/*
 Given a set of candidate numbers (C) and a target number (T),
 find all unique combinations in C where the candidate numbers sums to T.
 
