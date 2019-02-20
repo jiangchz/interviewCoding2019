@@ -17,6 +17,11 @@ public class AllPermutations1 {
             return;
         }
 
+        /*
+        每层recursion的物理意义是： 把某个字母放在position 。
+        recursion 负责跳到下一个position
+        for 循环用于寻找放在该层位置的字母
+         */
         for (int i = index; i < input.length; i++) {
             swap(input, i, index);
             bfs(input, index + 1, results);
