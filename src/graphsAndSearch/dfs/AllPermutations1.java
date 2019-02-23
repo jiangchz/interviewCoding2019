@@ -29,7 +29,7 @@ public class AllPermutations1 {
         }
     }
 
-    private static void swap(char[] array, int index1, int index2) {
+    public static void swap(char[] array, int index1, int index2) {
         char tmp = array[index1];
         array[index1] = array[index2];
         array[index2] = tmp;
