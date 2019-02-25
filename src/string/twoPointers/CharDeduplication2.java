@@ -1,4 +1,4 @@
-package string.deDuplication;
+package string.twoPointers;
 
 public class CharDeduplication2 {
     public static String deDup(String input) {

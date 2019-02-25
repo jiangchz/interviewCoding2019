@@ -1,4 +1,4 @@
-package string.charReplacement;
+package string.twoPointers;
 
 import java.util.ArrayList;
 

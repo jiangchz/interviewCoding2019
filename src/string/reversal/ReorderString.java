@@ -2,7 +2,11 @@ package string.reversal;
 
 public class ReorderString {
     public static int[] reorder(int[] array) {
-        reorderArray(array, 0, array.length - 1);
+        if (array.length % 2 != 0) {
+            reorderArray(array, 0, array.length - 2);//bug!
+        } else {
+            reorderArray(array, 0, array.length - 1);
+        }
         return array;
     }
 

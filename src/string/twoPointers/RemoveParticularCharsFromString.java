@@ -1,4 +1,4 @@
-package string.charRemoval;
+package string.twoPointers;
 
 import java.util.HashSet;
 
