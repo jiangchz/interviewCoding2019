@@ -24,9 +24,33 @@ public class AllSubsets1 {
         dfs(result, set, index + 1, sb);
     }
 
+
+    public static List<String> subSets2(String set) {
+        List<String> result = new ArrayList<>();
+        if (set == null) {
+            return result;
+        }
+        StringBuilder sb = new StringBuilder();
+        subSetsHelper(set, sb, result, 0);
+        return result;
+    }
+    private static void subSetsHelper(String set,
+                               StringBuilder sb,
+                               List<String> result,
+                               int index) {
+        if (index == set.length()) {
+            result.add(sb.toString());
+            return;
+        }
+        sb.append(set.charAt(index));//bug
+        subSetsHelper(set, sb, result, index + 1);
+        sb.deleteCharAt(sb.length() - 1);//bug
+        subSetsHelper(set, sb, result, index + 1);//bug
+    }
+
     public static void main(String args[]) {
         String test = "abc";
-        List<String> results = subSets(test);
+        List<String> results = subSets2(test);
         for (String result : results) {
             System.out.println(result);
         }

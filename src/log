@@ -1,0 +1,15 @@
+Exam1 Feb26th
+    InsertInLinkedList  -> green 12 minutes
+    AllSubsets1   ->  red 24 minutes
+        理解DFS搜索的时候什么时候用到遍历for循环，什么时候需要用recursion
+        DFS 在同层搜索不同挡板的时候需要用for循环
+        DFS 在向下搜索进入recursion tree的时候用recursion
+    KthSmallestInMatrix -> yellow 10 minutes
+
+Exam2 Feb26th
+    MiddleNodeOfLinkedList   -> 3 minutes bugfree
+    FibonacciNumber  -> 10 minutes
+        bug: use long instead of int
+    SelectionSortWithThreeStacks -> 20 minutes
+        bugs: 1. use Deque for stack
+              2. For duplicate numbers, need to use max counter
