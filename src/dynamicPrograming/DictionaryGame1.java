@@ -1,9 +1,12 @@
 package dynamicPrograming;
 
+import java.util.Arrays;
 import java.util.HashSet;
 
-public class DictionaryGame {
-    public boolean isInDictionary(HashSet<String> dictionary, String target) {
+public class DictionaryGame1 {
+    public boolean isInDictionary(String[] dic, String target) {
+        HashSet<String> dictionary = new HashSet<>(Arrays.asList(dic));
+
         int size = target.length();
         boolean[] inDictionary = new boolean[size + 1];
 
@@ -18,17 +21,6 @@ public class DictionaryGame {
         }
         return inDictionary[size];
     }
-
-
-
-
-
-
-
-
-
-
-
 }
 
 /*
