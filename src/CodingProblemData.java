@@ -45,7 +45,7 @@ public class CodingProblemData {
         myProblems.add(new Problem("CombinationSum1", 5));
         myProblems.add(new Problem("CombinationSum2", 5));
         myProblems.add(new Problem("CombinationSum3", 5));
-        myProblems.add(new Problem("CombinationSum4", 5));
+        myProblems.add(new Problem("CombinationSum4", 4));
         myProblems.add(new Problem("KSmallestElementsInArray", 5));
         myProblems.add(new Problem("CheckIfLinkedListHasACycle", 5));
         myProblems.add(new Problem("InsertInLinkedList", 3));

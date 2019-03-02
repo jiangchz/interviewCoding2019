@@ -1,13 +1,17 @@
 package graphsAndSearch.dfs;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public class CombinationSum4 {
 
     public static void main(String args[]) {
-        int[] numbers = {1, 2, 3, 6 , 7, 8};
+        int[] numbers = {1, 2, 3};
         System.out.println(getCombinationNumbers(numbers, 20));
         System.out.println(getCombinationNumbersV2(numbers, 20));
+        System.out.println(combinationSum4V3(numbers, 4));
+
     }
 
     public static int getCombinationNumbers(int[] numbers, int target) {
@@ -44,6 +48,34 @@ public class CombinationSum4 {
             }
         }
         return dp[target];
+    }
+
+    private static int myresult = 0;
+    public static int combinationSum4V3(int[] nums, int target) {
+        if (nums == null || nums.length == 0) {
+            return myresult;
+        }
+        Arrays.sort(nums);
+        List<Integer> currentNumbers = new ArrayList<Integer>();
+        dfsHelper(nums, currentNumbers, target, 0);
+        return myresult;
+    }
+    private static void dfsHelper(int[] nums, List<Integer> currentNumbers, int remains, int currentIndex) {
+        if (currentIndex == nums.length) {
+            return;
+        }
+        for (int i = currentIndex; i < nums.length; i++) {
+            currentNumbers.add(nums[i]);
+            if (remains - nums[i] == 0) {
+                myresult++;
+                return;
+            } else if (remains - nums[i] < 0) {
+                return;
+            } else {
+                dfsHelper(nums, currentNumbers, remains - nums[i], currentIndex);
+            }
+            currentNumbers.remove(currentNumbers.size() - 1);
+        }
     }
 }
 

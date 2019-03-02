@@ -13,3 +13,10 @@ Exam2 Feb26th
     SelectionSortWithThreeStacks -> 20 minutes
         bugs: 1. use Deque for stack
               2. For duplicate numbers, need to use max counter
+Exam3 Feb 27th
+    CombinationSum4   -> 15 minutes bug
+        1. DFS 不是最优解，动态规划最好
+        2. DFS 注意区分 - nums[i] 还是 -i
+Exam4 Feb 28th
+    AtoThePowerOfB
+    AllSubSets1
