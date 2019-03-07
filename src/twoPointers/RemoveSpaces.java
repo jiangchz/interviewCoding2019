@@ -1,4 +1,4 @@
-package string.twoPointers;
+package twoPointers;
 
 public class RemoveSpaces {
     public static String remove(String input) {

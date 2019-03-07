@@ -1,6 +1,7 @@
 package graphsAndSearch.dfs;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class AllSubsets2 {

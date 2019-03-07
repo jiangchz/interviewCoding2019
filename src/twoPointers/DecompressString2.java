@@ -1,4 +1,4 @@
-package string.twoPointers;
+package twoPointers;
 
 public class DecompressString2 {
     public static String decompress(String inputString) {
