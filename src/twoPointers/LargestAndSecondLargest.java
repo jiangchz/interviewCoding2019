@@ -51,7 +51,8 @@ public class LargestAndSecondLargest {
 
         public Node(int value) {
             this.value = value;
-            this.candidates = new LinkedList<Integer>();
+            this.candidates = new LinkedList<Integer>();//bug, if constructor not provide element for linkedlist,
+            //we still need to initialize the linkedlist or will have NPE.
         }
 
         public Node(int value, int candidatesValue) {
