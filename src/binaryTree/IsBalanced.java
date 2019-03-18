@@ -1,6 +1,7 @@
 package binaryTree;
 
 public class IsBalanced {
+    //not optimal solution O(nlogn)
     public boolean isBalanced(TreeNode root) {
         if (root == null) {
             return true;
@@ -19,8 +20,43 @@ public class IsBalanced {
         }
         return Math.max(getHeight(root.left), getHeight((root.right))) + 1;
     }
-}
 
+    //method
+    public boolean isBalanced2(TreeNode root) {
+        if (root == null) {
+            return true;
+        }
+       return getHeight2(root) != -1;
+    }
+
+    private int getHeight2(TreeNode root) {
+        if (root == null) {
+            return 0;
+        }
+        int leftHight = getHeight2(root.left);
+        int rightHight = getHeight2(root.right);
+        if (leftHight == -1 || rightHight == -1 || Math.abs(leftHight - rightHight) > 1) {
+            return -1;
+        }
+        return Math.max(leftHight, rightHight) + 1;
+    }
+}
+// key point: check whether tree is balance or not in getHeight function. Which means when you check two subtree at high
+// level, it need to enforce all the subTree are balanced. It can help detect unbalance tree early.
+/* For example:
+     When you recursive check point 2 and 3
+     the depth of 2 is 4
+     the depth of 3 is 3
+     with method 1, it will return true and unable to detect the unbalance
+     with method 2, it will detect the unbalance
+                1
+            2      3
+         4    5   6  7
+        6              9
+       9
+
+
+*/
 
 /*
 balance tree: for every node, the height difference for left subtree and right subtree is not larger than 1.
