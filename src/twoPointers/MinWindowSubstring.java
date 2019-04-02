@@ -36,7 +36,7 @@ public class MinWindowSubstring {
                 }
                 fast++;
             }
-x
+
             //shink the window to remove unnecessary letters
             while (slow < source.length() && lettersFound == lettersToFind) {
                 char currentChar = source.charAt(slow);
