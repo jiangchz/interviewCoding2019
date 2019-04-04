@@ -29,7 +29,7 @@ public class ReorderString {
         while (left < right) {
             int tmp = array[left];
             array[left++] = array[right];
-sw        }
+        }
     }
 
     public static void main(String args[]) {
