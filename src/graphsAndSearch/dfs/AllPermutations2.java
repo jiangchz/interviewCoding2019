@@ -9,11 +9,11 @@ public class AllPermutations2 {
     public static List<String> allPermutations(String input) {
         List<String> results = new ArrayList<>();
         char[] inputChars = input.toCharArray();
-        bfs(inputChars, 0, results);
+        dfs(inputChars, 0, results);
         return results;
     }
 
-    private static void bfs(char[] input, int parentIndex, List<String> results) {
+    private static void dfs(char[] input, int parentIndex, List<String> results) {
         if (parentIndex == input.length) {
             results.add(new String(input));
         }
@@ -24,7 +24,7 @@ public class AllPermutations2 {
                 continue;
             }
             swap(input, currentIndex, parentIndex);
-            bfs(input, currentIndex + 1, results);
+            dfs(input, currentIndex + 1, results);
             swap(input, currentIndex, parentIndex);
         }
     }
