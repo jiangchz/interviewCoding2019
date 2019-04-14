@@ -5,16 +5,15 @@ public class IsBST {
         if (root == null) {
             return true;
         }
-        int currentMax = Integer.MAX_VALUE;
-        int currentMin = Integer.MIN_VALUE;
-        return isBSTHelper(root.left, currentMin, root.key) && isBSTHelper(root.right, root.key, currentMax);
+        return isBSTHelper(root.left, null, null);
     }
 
-    private boolean isBSTHelper(TreeNode root, int min, int max) {
+    private boolean isBSTHelper(TreeNode root, Integer min, Integer max) {
         if (root == null) {
             return true;
         }
 
+        //if ((gobalMax != null && root.val >= gobalMax) || (gobalMin != null && root.val <= gobalMin )) {
         if (root.key >= min || root.key <= max) {
             return false;
         }
