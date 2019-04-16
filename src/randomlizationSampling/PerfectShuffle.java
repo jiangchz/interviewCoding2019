@@ -3,27 +3,21 @@ package randomlizationSampling;
 import java.util.Random;
 
 public class PerfectShuffle {
-    public void shuffle1(int[] array) {
-        Random random = new Random();
-        for (int i = 0; i < array.length - 1; i++) {
-            int randomOffset = random.nextInt(array.length - i);
-            swap(array, i, i + randomOffset);
-        }
-    }
-
     public void swap(int[] array, int i, int j) {
         int temp = array[i];
         array[i] = array[j];
         array[j] = temp;
     }
 
-    public void shuffle2(int[] array) {
+    public void shuffle(int[] array) {
         Random random = new Random();
         for (int i = array.length; i > 1; i--) {
             swap(array, i - 1, random.nextInt(i)); // bug swap(array, i, random.nextInt(i))
         }
     }
-
+    //第一次： 从100个数字里选一个出来放在第100位的地方  1/100
+    //第二次： 从前99个数字里选一个出来，放在第99位的地方  99/100 * 1/ 99 = 1/ 100
+    //第三次： 从前98个数字里选一个出来，放在第98位的地方  99/100 * 98 / 99 * 1/98 = 1/ 100
 }
 
 /*

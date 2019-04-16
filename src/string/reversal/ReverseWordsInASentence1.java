@@ -1,6 +1,6 @@
 package string.reversal;
 
-import static graphsAndSearch.dfs.AllPermutations1.swap;
+import static dfs.AllPermutations1.swap;
 
 public class ReverseWordsInASentence1 {
     public static String reverseWords(String input) {
