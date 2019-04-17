@@ -31,7 +31,7 @@ public class LargestSquareSurroundBy1 {
                 }
                 matrix[i][j] = 1;
                 int length = Math.min(rightToLeft[i][j], downToUp[i][j]);
-                for (int k = length; k > max && k > 1; k--) {
+                for (int k = length; k > max; k--) {
                     if (rightToLeft[i + k - 1][j] >= k && downToUp[i][j + k - 1] >= k) {
                         max = k;
                     }
