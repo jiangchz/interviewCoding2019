@@ -11,15 +11,36 @@ public class ArrayDeduplication3 {
         int fast = 0;
         while (fast < array.length) {
             int begin = fast;
+            //碰到重复的点，就一直在内层循环里累加fast
             while (fast < array.length && array[fast] == array[begin]) {
                 fast++;
             }
+            //判断是否碰到了重复
             if (fast == begin + 1) {
                 array[slow++] = array[begin];
             }
         }
         return Arrays.copyOfRange(array, 0 , slow);
+    }
 
+    public int[] dedup2(int[] array) {
+        //liner scan 还要回头看
+        int slow = -1;
+        int fast = 0;
+        while (fast < array.length) {
+            //case 1: not duplicate
+            if (slow == -1 || array[fast] != array[slow]) {
+                array[++slow] = array[fast++];
+                continue;
+            }
+
+            //case2 : duplicate
+            while (slow != -1 && fast != array.length && array[slow] == array[fast]) {
+                fast++;
+            }
+            slow--;
+        }
+        return Arrays.copyOfRange(array, 0 , slow + 1);
     }
 }
 /*
