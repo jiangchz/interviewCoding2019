@@ -7,11 +7,11 @@ import java.util.List;
 public class AllPermutations1 {
     public static List<String> allPermutations(String input) {
         List<String> results = new ArrayList<>();
-        bfs(input.toCharArray(), 0, results);
+        dfs(input.toCharArray(), 0, results);
         return results;
     }
 
-    private static void bfs(char[] input, int index, List<String> results) {
+    private static void dfs(char[] input, int index, List<String> results) {
         if (index == input.length) {
             results.add(new String(input));
             return;
@@ -24,7 +24,7 @@ public class AllPermutations1 {
          */
         for (int i = index; i < input.length; i++) {
             swap(input, i, index);
-            bfs(input, index + 1, results);
+            dfs(input, index + 1, results);
             swap(input, i, index);
         }
     }

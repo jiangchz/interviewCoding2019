@@ -48,10 +48,10 @@ public class LevelOrderTraveral {
             List<Integer> currentLevel = new ArrayList<>();
             result.add(0, currentLevel);
         }
-
+        //利用的是array list可以更改指定index位置的object/数值，把一个数据从上往下传递，在每层把相应的数据更新
         List<Integer> list = result.get(result.size() - level - 1);//*关键
+        list.add(current.key);
         levelOrderHelper(result, current.left, level + 1);
         levelOrderHelper(result, current.right, level + 1);
-        list.add(current.key);
     }
 }

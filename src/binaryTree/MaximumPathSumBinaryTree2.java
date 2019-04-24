@@ -11,11 +11,9 @@ public class MaximumPathSumBinaryTree2 {
         if (root == null) {
             return 0;
         }
-        int leftPathSum = maxPathSumHelper(root.left, maxSum);
-        int rightPathSum = maxPathSumHelper(root.right, maxSum);
 
-        leftPathSum = Math.max(0, leftPathSum);
-        rightPathSum = Math.max(0, rightPathSum);
+        int leftPathSum = Math.max(0, maxPathSumHelper(root.left, maxSum));
+        int rightPathSum = Math.max(0, maxPathSumHelper(root.right, maxSum));
         int crossSum = leftPathSum + rightPathSum + root.key;
         maxSum[0] = Math.max(crossSum, maxSum[0]);
         return root.key + Math.max(leftPathSum, rightPathSum);
