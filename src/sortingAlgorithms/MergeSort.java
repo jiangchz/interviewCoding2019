@@ -8,6 +8,43 @@ public class MergeSort {
         mergeSort(array);
     }
 
+    //version 0, 递归当前层把底下传上来的处理好的数据给合并成结果
+    public int[] mergeSort0(int[] array) {
+        return mergeSortHelper(array, 0, array.length - 1);
+    }
+    public int[] mergeSortHelper(int[] array, int left, int right) {
+        if (left > right) {
+            return new int[]{};
+        }
+        if (left == right) {
+            return new int[]{array[left]};
+        }
+
+        int mid = left + (right - left) / 2;
+        int[] leftResult = mergeSortHelper(array, left, mid);
+        int[] rightResult = mergeSortHelper(array, mid + 1, right);
+        return merge(leftResult, rightResult);
+    }
+    private int[] merge(int[] left, int[] right) {
+        int m = left.length;
+        int n = right.length;
+        int leftIndex = 0;
+        int rightIndex = 0;
+        int[] result = new int[m + n];
+        for (int i = 0; i < m + n; i++) {
+            int leftValue = leftIndex < m ? left[leftIndex] : Integer.MAX_VALUE;
+            int rightValue = rightIndex < n ? right[rightIndex]: Integer.MAX_VALUE;
+            if (leftValue < rightValue) {
+                result[i] = left[leftIndex++];
+            } else {
+                result[i] = right[rightIndex++];
+            }
+        }
+        return result;
+    }
+
+    //version 1 把结果递归的向下传，下层递归不需要向上返回值，而是修改参数的状态。
+    //在merge的时候借助2个local 变量
     public static int[] mergeSort(int[] array) {
         if (array == null || array.length == 0) {
             return array;
@@ -54,6 +91,47 @@ public class MergeSort {
 
         while (rightIndex < rightSize) {
             array[left++] = rightArray[rightIndex++];
+        }
+    }
+
+    //version 2 把结果递归的向下传，下层递归不需要向上返回值，而是修改参数的状态。
+    //在merge的时候借助上层传下来的helper array
+    public static int[] mergeSort2(int[] array) {
+        int[] temp = new int[array.length];
+        mergeSortHelper2(array, temp, 0, array.length - 1);
+        return array;
+    }
+
+    private static void mergeSortHelper2(int[] array, int[] temp, int left, int right) {
+        if (left >= right) {
+            return;
+        }
+        int mid = left + (right - left) / 2;
+        mergeSortHelper2(array, temp, left, mid);
+        mergeSortHelper2(array, temp, mid + 1, right);
+        merge2(array, temp, left, mid, right);
+    }
+
+    private static void merge2(int[] array,
+                       int[] temp,
+                       int left,
+                       int mid,
+                       int right) {
+        int leftIndex = left;
+        int rightIndex = mid + 1;
+        int resultIndex = left;
+        while (leftIndex <= mid || rightIndex <= right) {
+            int leftValue = leftIndex <= mid ? array[leftIndex] : Integer.MAX_VALUE;
+            int rightValue = rightIndex <= right ? array[rightIndex] : Integer.MAX_VALUE;
+            if (leftValue <= rightValue) {
+                temp[resultIndex++] = array[leftIndex++];
+            } else {
+                temp[resultIndex++] = array[rightIndex++];
+            }
+        }
+
+        for (int i = left; i <= right; i++) {
+            array[i] = temp[i];
         }
     }
 

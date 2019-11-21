@@ -1,5 +1,6 @@
 package sortingAlgorithms;
 
+import java.util.Arrays;
 import java.util.Deque;
 import java.util.LinkedList;
 
@@ -26,18 +27,18 @@ public class SelectionSort {
     }
 
     public int[] selectionSortWith3Stacks(int[] array) {
-        Deque<Integer> orignalStack = new LinkedList<>();
+        Deque<Integer> originalStack = new LinkedList<>();
         Deque<Integer> templeStack = new LinkedList<>();
         Deque<Integer> resultStack = new LinkedList<>();
 
         for (int current : array) {
-            orignalStack.addLast(current);
+            originalStack.addLast(current);
         }
-        while (orignalStack.size() != 0) {
+        while (originalStack.size() != 0) {
             int gobalMax = Integer.MIN_VALUE;
             int gobalMaxCounter = 0;
-            while (orignalStack.size() != 0) {
-                int currentValue = orignalStack.removeLast();
+            while (originalStack.size() != 0) {
+                int currentValue = originalStack.removeLast();
                 if (currentValue > gobalMax) {
                     gobalMax = currentValue;
                     gobalMaxCounter = 1;
@@ -54,7 +55,7 @@ public class SelectionSort {
             while(templeStack.size() != 0) {
                 int currentValue = templeStack.removeLast();
                 if (currentValue < gobalMax) {
-                    orignalStack.addLast(currentValue);
+                    originalStack.addLast(currentValue);
                 }
             }
         }
@@ -67,6 +68,138 @@ public class SelectionSort {
         return array;
     }
 
+    public static int[] selectionSortWith3StacksFuxi(int[] array) {
+        Deque<Integer> originalStack = new LinkedList<>();
+        for (int i : array) {
+            originalStack.push(i);
+        }
+        Deque<Integer> templeStack = new LinkedList<>();
+        Deque<Integer> resultStack = new LinkedList<>();
+
+        while (originalStack.size() != 0 || templeStack.size() != 0) {
+            //swap if template stack is not empty
+            if (originalStack.size() == 0) {
+                Deque<Integer> temple = templeStack;
+                templeStack = originalStack;
+                originalStack = temple;
+            }
+
+            int globalMin = Integer.MAX_VALUE;
+            while (originalStack.size() != 0) {
+                int current = originalStack.pop();
+                if (resultStack.size() != 0 && current == resultStack.peek()) {
+                    continue;
+                }
+                globalMin = Math.min(current, globalMin);
+                templeStack.push(current);
+            }
+            resultStack.push(globalMin);
+        }
+
+        resultStack.pop();
+        for (int i = array.length - 1; i >= 0; i--) {
+            array[i] = resultStack.poll();
+        }
+        return array;
+    }
+
+    public static int[] selectionSortWith3StacksDuplicate(int[] array) {
+        Deque<Integer> originalStack = new LinkedList<>();
+        for (int i : array) {
+            originalStack.push(i);
+        }
+        Deque<Integer> templeStack = new LinkedList<>();
+        Deque<Integer> resultStack = new LinkedList<>();
+
+        while (originalStack.size() != 0 || templeStack.size() != 0) {
+            //swap if template stack is not empty
+            if (originalStack.size() == 0) {
+                Deque<Integer> temple = templeStack;
+                templeStack = originalStack;
+                originalStack = temple;
+            }
+
+            int globalMin = Integer.MAX_VALUE;
+            int minCounter = 0;
+            while (originalStack.size() != 0) {
+                int current = originalStack.pop();
+                if (resultStack.size() != 0 && current == resultStack.peek()) {
+                    continue;
+                }
+                if (current < globalMin) {
+                    globalMin = current;
+                    minCounter = 1;
+                } else if (current == globalMin) {
+                    minCounter++;
+                }
+
+                templeStack.push(current);
+            }
+
+            for (int i = 0; i < minCounter; i++) {
+                resultStack.push(globalMin);
+            }
+        }
+
+        while (resultStack.peek() == Integer.MAX_VALUE) {
+            resultStack.pop();
+        }
+
+        for (int i = array.length - 1; i >= 0; i--) {
+            array[i] = resultStack.poll();
+        }
+        return array;
+    }
+
+    public static int[] selectionSortWith2Stacks(int[] array) {
+        Deque<Integer> originalStack = new LinkedList<>();
+        for (int i : array) {
+            originalStack.push(i);
+        }
+        Deque<Integer> resultStack = new LinkedList<>();
+
+        int resultCountInStack = 0;
+        while (originalStack.size() != 0) {
+            //move numbers to resultStack
+            int globalMin = Integer.MAX_VALUE;
+            int minCount = 0;
+            while (originalStack.size() != 0) {
+                int current = originalStack.pop();
+                if (current < globalMin) {
+                    globalMin = current;
+                    minCount = 1;
+                } else if (current == globalMin){
+                    minCount++;
+                }
+                resultStack.push(current);
+            }
+            //move numbers back from result stack
+            while (resultStack.size() > resultCountInStack) {
+                int current = resultStack.pop();
+                if (current > globalMin) {
+                    originalStack.push(current);
+                }
+            }
+
+            for (int i = 0; i < minCount; i++) {
+                resultStack.push(globalMin);
+            }
+            resultCountInStack += minCount;
+        }
+
+        for (int i = array.length - 1; i >= 0; i--) {
+            array[i] = resultStack.poll();
+        }
+        return array;
+    }
+
+    public static void main (String[] args) {
+        int[] test = {2, 2, 2, 2, 1, 6, 1, 1,3, 3, 5, 7};
+        selectionSortWith2Stacks(test);
+        for (int i  : test) {
+            System.out.print(i + " ");
+        }
+    }
 }
 
 /*

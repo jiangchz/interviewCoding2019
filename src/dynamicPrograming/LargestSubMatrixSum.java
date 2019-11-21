@@ -191,11 +191,6 @@ public class LargestSubMatrixSum {
         return result;
     }
 
-
-
-
-
-
     public static void main(String[] args) {
         int[][] input = new int[2][2];
         input[0][0] = 0;
