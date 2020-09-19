@@ -37,7 +37,7 @@ public class RobotRoomCleaner {
     }
     class Robot {
         public boolean move(){
-
+            return true;
         }
         public void turnRight(){
 

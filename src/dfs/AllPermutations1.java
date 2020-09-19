@@ -11,21 +11,16 @@ public class AllPermutations1 {
         return results;
     }
 
-    private static void dfs(char[] input, int index, List<String> results) {
-        if (index == input.length) {
+    private static void dfs(char[] input, int indexInResultString, List<String> results) {
+        if (indexInResultString == input.length) {
             results.add(new String(input));
             return;
         }
 
-        /*
-        每层recursion的物理意义是： 把某个字母放在position 。
-        recursion 负责跳到下一个position
-        for 循环用于寻找放在该层位置的字母
-         */
-        for (int i = index; i < input.length; i++) {
-            swap(input, i, index);
-            dfs(input, index + 1, results);
-            swap(input, i, index);
+        for (int i = indexInResultString; i < input.length; i++) {
+            swap(input, i, indexInResultString);
+            dfs(input, indexInResultString + 1, results);
+            swap(input, i, indexInResultString);
         }
     }
 
@@ -44,12 +39,21 @@ public class AllPermutations1 {
 }
 
 /*
-Given a string with no duplicate characters, return a list with all permutations of the characters.
+题目：
+    Given a string with no duplicate characters, return a list with all permutations of the characters.
 
-Examples
+    Examples
 
-Set = “abc”, all permutations are [“abc”, “acb”, “bac”, “bca”, “cab”, “cba”]
-Set = "", all permutations are [""]
-Set = null, all permutations are []
+    Set = “abc”, all permutations are [“abc”, “acb”, “bac”, “bca”, “cab”, “cba”]
+    Set = "", all permutations are [""]
+    Set = null, all permutations are []
 
+分析：
+
+    每层recursion的物理意义是： 把字母放在与当前层recursion对应的position
+    比如第一层recursion，就是用于填写result string的第一个字母，然后填写第二个字母的任务交给下层recursion
+    终止条件：当需要填写第input.length个字母时，说明0 ～ （length -1）的字母都已经填好了
+    for 循环用于不断替换放在当前recursion层对应位置的字母
+时间复杂度：
+    n * n!  有那个位置需要执行一次dfs，对于每一次dfs每个位置有n！种可能的排列
  */
