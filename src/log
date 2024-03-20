@@ -11,7 +11,7 @@ Exam2 Feb26th
     FibonacciNumber  -> 10 minutes
         bug: use long instead of int
     SelectionSortWithThreeStacks -> 20 minutes
-        bugs: 1. use Deque for stack
+        bugs: 1. use Deque for leetcode.stack
               2. For duplicate numbers, need to use max counter
 Exam3 Feb 27th
     CombinationSum4   -> 15 minutes bug
