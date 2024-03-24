@@ -2,6 +2,7 @@ package leetcode.string.subStringFInding;
 
 import javax.management.InvalidAttributeValueException;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 public class MovingSeats {

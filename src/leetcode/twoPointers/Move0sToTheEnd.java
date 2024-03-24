@@ -1,6 +1,6 @@
 package leetcode.twoPointers;
 
-import static leetcode.sortingAlgorithms.QuickSort.swap;
+import static leetcode.sortingAlgorithms.quicksort.QuickSort.swap;
 
 public class Move0sToTheEnd {
     public int[] moveZero1(int[] array) {

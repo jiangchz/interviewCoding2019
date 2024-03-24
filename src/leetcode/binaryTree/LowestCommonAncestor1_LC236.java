@@ -1,9 +1,16 @@
 package leetcode.binaryTree;
 
-public class LowestCommonAncestor1 {
+public class LowestCommonAncestor1_LC236 {
     public TreeNode lowestCommonAncestor(TreeNode root,
                                          TreeNode one, TreeNode two) {
-        if (root == null || root == one || root == two) {
+        //leaf node
+        if (root == null) {
+            return null;
+        }
+
+        //pruning in advance， say we get root == one, we don't need to check if we able to find two in current subtree
+        //**we will check if two in the other half of the tree**
+        if (root == one || root == two) {
             return root;
         }
 

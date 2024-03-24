@@ -1,4 +1,4 @@
-package leetcode.sweepLine;
+package leetcode.interval;
 
 import java.util.ArrayList;
 import java.util.Collections;

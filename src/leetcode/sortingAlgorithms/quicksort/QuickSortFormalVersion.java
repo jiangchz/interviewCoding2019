@@ -1,4 +1,4 @@
-package leetcode.sortingAlgorithms;
+package leetcode.sortingAlgorithms.quicksort;
 
 public class QuickSortFormalVersion {
     public static void main(String args[]) {
