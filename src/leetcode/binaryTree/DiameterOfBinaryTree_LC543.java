@@ -1,6 +1,6 @@
 package leetcode.binaryTree;
 
-public class DiameterOfBinaryTree {
+public class DiameterOfBinaryTree_LC543 {
     public int diameterOfBinaryTree(TreeNode root) {
         return getMaxLength(root).twoBranchMax - 1;
     }

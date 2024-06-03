@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Set;
 
 public class RightSideView_levelOrder_LC199 {
-    public List<Integer> rightSideView(TreeNode root) {
+    public List<Integer> rightSideView_bfs(TreeNode root) {
         if (root == null) {
             return new ArrayList();
         }
@@ -21,7 +21,7 @@ public class RightSideView_levelOrder_LC199 {
                 TreeNode currentNode = toVisit.remove(0);
 
                 if (i == 0) {
-                    result.add(currentNode.val);
+                    result.add(currentNode.key);
                 }
 
                 if (currentNode.right != null) {
@@ -33,5 +33,24 @@ public class RightSideView_levelOrder_LC199 {
             }
         }
         return result;
+    }
+
+    //DFS version
+    public List<Integer> rightSideView2(TreeNode root) {
+        List<Integer> result = new ArrayList<Integer>();
+        rightView(root, result, 0);
+        return result;
+    }
+
+    public void rightView(TreeNode curr, List<Integer> result, int currDepth){
+        if(curr == null){
+            return;
+        }
+        if(currDepth == result.size()){
+            result.add(curr.key);
+        }
+
+        rightView(curr.right, result, currDepth + 1);
+        rightView(curr.left, result, currDepth + 1);
     }
 }

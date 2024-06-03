@@ -4,70 +4,89 @@ import javax.management.InvalidAttributeValueException;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Queue;
 
 public class MovingSeats {
-    public static int minMoves(String source) {
-        int totalSeats = source.length();
-        char[] chars = source.toCharArray();
-        int minMove = 0;
-        //find all the used seats
-        List<Integer> usedSeats = new ArrayList<>();
-        for (int i = 0; i < totalSeats; i++) {
-            if (chars[i] == 'x') {
-                usedSeats.add(i);
-            }
+//    public static int minMoves(String source) {
+//        int totalSeats = source.length();
+//        char[] chars = source.toCharArray();
+//        int minMove = 0;
+//        //find all the used seats
+//        List<Integer> usedSeats = new ArrayList<>();
+//        for (int i = 0; i < totalSeats; i++) {
+//            if (chars[i] == 'x') {
+//                usedSeats.add(i);
+//            }
+//        }
+//
+//        private boolean isDungeonSolvable(final Room startingRoom) {
+//
+//            Queue<Room> roomToVisit = new LinkedList<>();
+//
+//            roomToVisit.add(startingRoom);
+//
+//            while(!roomToVisit.isEmpty()) {
+//                Room currentRoom = roomToVisit.poll();
+//
+//                if (currentRoom.hasTreasure()) {
+//                    return true;
+//                }
+//
+//                for (Door door : currentRoom.getDoors()) {
+//                    for (Room connectedRoom : door.getRooms) {
+//                        if (connectedRoom == currentRoom) {
+//                            continue;
+//                        }
+//                        roomToVisit.add(connectedRoom);
+//                    }
+//                }
+//
+//            }
+//
+//            return false;
+//        }
+//
+//        if (usedSeats.size() <= 1) {
+//            return 0;
+//        }
+//
+//        int median = usedSeats.size() / 2;
+//        int medianPosition = usedSeats.get(median);
+//        int offset = 1;
+//        int move = 0;
+//        for (int i = 0; i < median; i++) {
+//            int currentMove = medianPosition - usedSeats.get(i) - offset;
+//            move += currentMove;
+//            offset++;
+//        }
+//
+//        offset = 1;
+//        for(int i = median + 1; i < usedSeats.size(); i++) {
+//            int currentMove =  usedSeats.get(i) - medianPosition - offset;
+//            move += currentMove;
+//            offset++;
+//        }
+//
+//        return move;
+//
+//    }
+
+    private static class Room {
+        List<Door> doors;
+        public List<Door> getDoors() {
+            return this.doors;
         }
 
-        private boolean isDungeonSolvable(final Room startingRoom) {
-
-            Queue<Room> roomToVisit = new LinkedList<>();
-
-            roomToVisit.add(startingRoom);
-
-            while(!roomToVisit.isEmpty()) {
-                Room currentRoom = queue.poll();
-
-                if (currentRoom.hasTreasure()) {
-                    return true;
-                }
-
-                if (Door door : currentRoom.getDoors()) {
-                    for (Room connectedRoom : door.getRooms) {
-                        if (connectedRoom == currentRoom) {
-                            continue;
-                        }
-                        roomToVisit.add(connectedRoom);
-                    }
-                }
-
-            }
-
+        public boolean hasTreasure() {
             return false;
         }
+    }
 
-        if (usedSeats.size() <= 1) {
-            return 0;
+    private static class Door {
+        List<Room> rooms;
+        private List<Room> getRooms() {
+            return this.rooms;
         }
-
-        int median = usedSeats.size() / 2;
-        int medianPosition = usedSeats.get(median);
-        int offset = 1;
-        int move = 0;
-        for (int i = 0; i < median; i++) {
-            int currentMove = medianPosition - usedSeats.get(i) - offset;
-            move += currentMove;
-            offset++;
-        }
-
-        offset = 1;
-        for(int i = median + 1; i < usedSeats.size(); i++) {
-            int currentMove =  usedSeats.get(i) - medianPosition - offset;
-            move += currentMove;
-            offset++;
-        }
-
-        return move;
-
     }
 
     //ref: https://leetcode.com/discuss/interview-question/algorithms/125002/minimum-number-of-jumps

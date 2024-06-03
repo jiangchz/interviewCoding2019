@@ -2,7 +2,8 @@ package leetcode.binaryTree;
 
 public class LowestCommonAncestor1_LC236 {
     public TreeNode lowestCommonAncestor(TreeNode root,
-                                         TreeNode one, TreeNode two) {
+                                         TreeNode one,
+                                         TreeNode two) {
         //leaf node
         if (root == null) {
             return null;

@@ -1,6 +1,6 @@
 package leetcode.sortingAlgorithms;
 
-public class AtoThePowerOfB {
+public class AtoThePowerOfB_LC50 {
     public static long getAToThePowerOfB(int base, int power) {
         if (base == 1 || base == 0) {
             return base;
@@ -21,6 +21,31 @@ public class AtoThePowerOfB {
         System.out.println(getAToThePowerOfB(base, power));
     }
 
+    //Method to hand power might be negative
+    public double myPow(double base, int power) {
+        if (base == 1 || base == 0) {
+            return base;
+        }
+
+        if (power == 0) {
+            return 1;
+        }
+
+        long tempPower = power < 0 ? ((long)power * -1) : power;
+
+        double result = 1;
+        while (tempPower > 0) {
+            if (tempPower % 2 == 0) {
+                base = base * base;
+                tempPower = tempPower / 2;
+            } else {
+                result = result * base;
+                tempPower--;
+            }
+        }
+
+        return power > 0 ? result : 1 / result;
+    }
 }
 
 /*

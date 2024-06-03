@@ -64,7 +64,7 @@ public class AllValidPermutationsOfParentheses2 {
         }
     }
 
-    // initial thinking for reference --> can be replaced by a one dimensional leetcode.array
+        // initial thinking for reference --> can be replaced by a one dimensional leetcode.array
     @Deprecated
     private class RemainParentheses {
         public int l_left;

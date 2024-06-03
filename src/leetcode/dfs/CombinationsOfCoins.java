@@ -1,34 +1,30 @@
 package leetcode.dfs;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 public class CombinationsOfCoins {
     public static List<List<Integer>> combinations(int target, int[] coins) {
         List<List<Integer>> result = new ArrayList<>();
-        List<Integer> currentCombination = new ArrayList<>(coins.length);
-        bfs(result, currentCombination, target, coins, 0);
+        dfs(target, new LinkedList<>(), result, coins, 0);
         return result;
     }
 
-    private static void bfs(List<List<Integer>> result,
-                            List<Integer>  currentCombination,
-                            int remains,
-                            int[] coins,
-                            int index) {
-        if (index == coins.length - 1) {//bug
-            if (remains % coins[index] == 0) {//bug
-                currentCombination.add(remains / coins[index]);
-                result.add(new ArrayList<>(currentCombination));
-                currentCombination.remove(currentCombination.size() - 1);
-            }
-            return; // bug2
+    private static void dfs(int remains, LinkedList<Integer> path, List<List<Integer>> result, int[] coins, int index) {
+        if (remains == 0 && index == coins.length) {
+            result.add(new LinkedList<>(path));
+            return;
         }
 
-        for (int i = 0; i <= remains / coins[index]; i++) { //bug4 <=
-            currentCombination.add(i);
-            bfs(result, currentCombination, remains - coins[index] * i, coins, index + 1 );
-            currentCombination.remove(currentCombination.size() - 1); //bug3
+        if (remains < 0 || index == coins.length) {
+            return;
+        }
+
+        for (int count = 0; remains - coins[index] * count >= 0; count++) {
+            path.add(count);
+            dfs(remains - coins[index] * count, path, result, coins, index + 1);
+            path.removeLast();
         }
     }
 

@@ -2,13 +2,13 @@ package leetcode.binarySearch;
 
 public class FindFirstAndLastPositionOfElementInSortedArray {
     public int[] searchRange(int[] nums, int target) {
-        int[] result = new int[]{-1, -1};
         if (nums == null || nums.length == 0) {
-            return result;
+            return new int[]{-1, -1};
         }
-
         int left = 0;
         int right = nums.length - 1;
+        int startIndex = -1;
+        //find first target
         while (left + 1 < right) {
             int mid = left + (right - left) / 2;
             if (nums[mid] >= target) {
@@ -17,22 +17,36 @@ public class FindFirstAndLastPositionOfElementInSortedArray {
                 left = mid;
             }
         }
+
+        //post-processing for find first target
         if (nums[left] == target) {
-            result[0] = left;
+            startIndex = left;
         } else if (nums[right] == target) {
-            result[0] = right;
+            startIndex = right;
+        } else {
+            return new int[]{startIndex, startIndex};
         }
 
-        if (result[0] == -1) {
-            return result;
-        }
-        //注意 [1] 或者[2, 2]的情况
-        for (int i = result[0]; i < nums.length + 1; i++) {
-            if (i == nums.length || nums[i] != target) {
-                result[1] = i - 1;
-                break;
+        //find last target
+        left = startIndex;
+        right = nums.length - 1;
+        while (left + 1 < right) {
+            int mid = left + (right - left) / 2;
+            if (nums[mid] <= target) {
+                left = mid;
+            } else {
+                right = mid;
             }
         }
-        return result;
+
+        int endIndex = -1;
+        //post-processing for find last target
+        if (nums[right] == target) {
+            endIndex = right;
+        } else {
+            endIndex = left;
+        }
+
+        return new int[]{startIndex, endIndex};
     }
 }

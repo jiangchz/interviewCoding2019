@@ -4,22 +4,12 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class LRUCache {
-    private class ListNode {
-        ListNode next;
-        ListNode previous;
-        int value;
-        int key;
-        public ListNode(int key, int value) {
-            this.key = key;
-            this.value = value;
-        }
-    }
 
     private Map<Integer, ListNode> map;
     //1. 不需要新建一个list
     //2. 直接建head 和tail 指向-1
-    private ListNode head = new ListNode(-1, -1);;
-    private ListNode tail = new ListNode(-1, -1);;
+    private ListNode head = new ListNode(-1, -1);
+    private ListNode tail = new ListNode(-1, -1);
     private final int capacity;
 
     public LRUCache(int capacity) {
@@ -75,6 +65,17 @@ public class LRUCache {
         map.remove(tail.previous.key);
         tail.previous = tail.previous.previous;
         tail.previous.next = tail;
+    }
+
+    private static class ListNode {
+        ListNode next;
+        ListNode previous;
+        int value;
+        int key;
+        public ListNode(int key, int value) {
+            this.key = key;
+            this.value = value;
+        }
     }
 }
 
